@@ -40,7 +40,8 @@
   .portrait { width: 224px; height: 268px; object-fit: cover; object-position: center top; border-radius: 5px;
     filter: grayscale(10%) contrast(1.02); box-shadow: 0 1px 0 var(--line), 0 20px 38px -24px rgba(20,22,26,.5); }
   .links { display: flex; flex-wrap: wrap; gap: 6px 0; font-family: "IBM Plex Mono", monospace; font-size: .8rem; margin-top: 1.4em; }
-  .links a { padding: 3px 0; }
+  .links a { padding: 3px 0; display: inline-flex; align-items: center; gap: 6px; }
+  .links .ic { width: 15px; height: 15px; fill: currentColor; opacity: .85; }
   .links .sep { color: var(--faint); padding: 0 12px; }
 
   section { margin-top: 62px; }
@@ -55,14 +56,15 @@
   .news .what { margin: 0; }
 
   .pubs { display: flex; flex-direction: column; gap: 6px; }
-  .pub { display: grid; grid-template-columns: 96px 1fr; gap: 22px; align-items: start; padding: 16px 12px 16px 14px;
+  .pub { display: grid; grid-template-columns: 148px 1fr; gap: 22px; align-items: start; padding: 16px 12px 16px 14px;
     margin: 0 -12px; border-radius: 8px; transition: background .25s ease; position: relative; }
   .pub::before { content: ""; position: absolute; left: 0; top: 16px; bottom: 16px; width: 2px; background: var(--accent);
     border-radius: 2px; opacity: 0; transition: opacity .25s ease; }
   .pub:hover { background: var(--paper-2); }
   .pub:hover::before { opacity: 1; }
-  .pub-venue-col { font-family: "IBM Plex Mono", monospace; font-size: .76rem; font-weight: 500; color: #3a3d42; padding-top: .2em; line-height: 1.5; }
-  .pub-venue-col .yr { display: block; color: var(--muted); font-weight: 400; }
+  .thumb { width: 148px; height: 96px; object-fit: cover; display: block; border-radius: 4px; background: var(--paper-2); box-shadow: 0 1px 0 var(--line); }
+  .thumb.ph { display: flex; align-items: center; justify-content: center; color: var(--faint); font-family: "IBM Plex Mono", monospace; font-size: .8rem; }
+  .pub-venue { font-family: "IBM Plex Mono", monospace; font-size: .76rem; font-weight: 500; letter-spacing: .03em; color: #3a3d42; }
   .pub-title { font-weight: 600; line-height: 1.35; margin: 0 0 3px; }
   .pub-authors { color: var(--muted); font-size: .92rem; margin: 0 0 6px; }
   .pub-authors .me { color: var(--ink); font-weight: 600; }
@@ -94,7 +96,7 @@
     .portrait { width: 164px; height: 196px; }
     .news li, .exp li, .pub { grid-template-columns: 1fr; gap: 2px; }
     .news .when, .exp .when { padding-top: 0; }
-    .pub-venue-col .yr { display: inline; margin-left: 8px; }
+    .thumb-col { display: none; }
     .cols { grid-template-columns: 1fr; gap: 28px; }
   }
 </style>
@@ -109,22 +111,23 @@
       <div class="bio">
         <p>I build <strong>learning systems that do more with less</strong>: sample-efficient reinforcement learning,
         generative models that learn well from limited data, and fast inference for large multimodal policies.
-        A recurring theme in my work is using uncertainty and multimodality — via <strong>IMLE</strong>-style
-        generative models — to learn reliably from little experience.</p>
+        A recurring theme in my work is <strong>multimodal, sample-efficient generative modeling</strong> and using
+        it to learn reliably from little experience.</p>
         <p>I am a PhD candidate at <strong>Simon Fraser University</strong> (APEX Lab), advised by
         <a href="https://www.sfu.ca/~keli/">Ke Li</a>, and affiliated with <strong>Amii</strong>. I expect to
         graduate in Fall 2026. Currently I am a Research Intern at <strong>RBC Borealis</strong>, where I work on
-        making vision-language-action (VLA) policies fast enough for real-time robotic control through
-        attention-guided token pruning and compression. Before my PhD I spent three years shipping production
+        improving the inference speed of multi-billion-parameter multimodal models for robotics. In parallel,
+        I am developing a novel, sample-efficient approach to <strong>reinforcement learning fine-tuning of
+        multi-billion-parameter vision-language-action (VLA) models</strong>. Before my PhD I spent three years shipping production
         software, including a verifiable voting system and end-to-end encrypted cloud storage.</p>
         <p>I am on the job market for 2026 and always happy to chat about RL, generative modeling, or robot learning.</p>
       </div>
       <nav class="links">
-        <a href="mailto:maa143@sfu.ca">Email</a><span class="sep">/</span>
-        <a href="Mehran_Aghabozorgi_CV.pdf">CV</a><span class="sep">/</span>
-        <a href="https://scholar.google.com/citations?hl=en&user=sKWTHpsAAAAJ">Scholar</a><span class="sep">/</span>
-        <a href="https://github.com/mehranagh20">GitHub</a><span class="sep">/</span>
-        <a href="https://www.linkedin.com/in/mehran-aghabozorg">LinkedIn</a>
+        <a href="mailto:maa143@sfu.ca"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z" fill="none"/><path d="M3 5.5A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5v-13zm1.6.5v.4l7.4 5.2 7.4-5.2V6H4.6zm14.8 2.3-7.4 5.2-7.4-5.2V18h14.8V8.3z"/></svg>Email</a><span class="sep">/</span>
+        <a href="Mehran_Aghabozorgi_CV.pdf"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V8h4.5L13 3.5zM7.5 12h9v1.5h-9V12zm0 3.5h9V17h-9v-1.5z"/></svg>CV</a><span class="sep">/</span>
+        <a href="https://scholar.google.com/citations?hl=en&user=sKWTHpsAAAAJ"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6.5 9.7V17c0 1.7 2.9 4 6.5 4s6.5-2.3 6.5-4v-4.3L12 16.4l-6.5-3.7z"/></svg>Scholar</a><span class="sep">/</span>
+        <a href="https://github.com/mehranagh20"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.7-4.6 4.9.4.3.7 1 .7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a><span class="sep">/</span>
+        <a href="https://www.linkedin.com/in/mehran-aghabozorg"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H10V9z"/></svg>LinkedIn</a>
       </nav>
     </div>
     <img class="portrait" src="assets/profile.jpeg" alt="Mehran Aghabozorgi">
@@ -143,8 +146,8 @@
   <section class="reveal" style="animation-delay:.22s">
     <p class="eyebrow">Experience</p>
     <ul class="exp">
-      <li><span class="when">2026</span><p class="what"><strong>RBC Borealis</strong> — Research Intern<span class="sub">Accelerating VLA policies for real-time robotic control via attention-guided token pruning and compressed-sensing token compression.</span></p></li>
-      <li><span class="when">2021 – now</span><p class="what"><strong>Simon Fraser University</strong> — PhD in Computer Science, APEX Lab<span class="sub">Generative modeling and reinforcement learning with Ke Li. Affiliated with the Alberta Machine Intelligence Institute (Amii).</span></p></li>
+      <li><span class="when">2026</span><p class="what"><strong>RBC Borealis</strong> — Research Intern<span class="sub">Improving the inference speed of multi-billion-parameter multimodal models for real-time robotics.</span></p></li>
+      <li><span class="when">2021 – now</span><p class="what"><strong>Simon Fraser University</strong> — PhD in Computer Science, APEX Lab<span class="sub">Generative modeling and reinforcement learning with Ke Li; currently sample-efficient RL fine-tuning of large VLA models. Affiliated with the Alberta Machine Intelligence Institute (Amii).</span></p></li>
       <li><span class="when">2019</span><p class="what"><strong>Max Planck Institute for Informatics</strong> — Research Intern<span class="sub">Improved the preprocessing phase of the SPASS solver with Christoph Weidenbach; validated on competition-grade benchmarks.</span></p></li>
       <li><span class="when">2017 – 2020</span><p class="what"><strong>Morvarid</strong> — Senior Developer<span class="sub">Production systems in Python, Java, Scala, and JavaScript: verifiable voting, encrypted cloud storage, and Ergo Pool blockchain infrastructure.</span></p></li>
       <li><span class="when">2015 – 2020</span><p class="what"><strong>Isfahan University of Technology</strong> — B.Sc. in Computer Engineering<span class="sub">Ranked 1st in class (GPA 18.29/20).</span></p></li>
@@ -195,16 +198,16 @@ const PUBS = [
   { title: "MoCQL: Model-Based Conservative Q-Learning with Extrapolation Scores",
     authors: [ME, "Ke Li"], venue: "NeurIPS", year: "2026", badge: "Under review", badgeSub: true, links: [] },
   { title: "WIMLE: Uncertainty-Aware World Models with IMLE for Sample-Efficient Continuous Control",
-    authors: [ME, "Yanshu Zhang", "Alireza Moazeni", "Ke Li"], venue: "ICLR", year: "2026",
+    authors: [ME, "Yanshu Zhang", "Alireza Moazeni", "Ke Li"], venue: "ICLR", year: "2026", thumb: "assets/papers/wimle.gif",
     links: [["Paper","https://arxiv.org/abs/2602.14351"],["Project","https://mehranagh20.github.io/wimle/"],["Code","https://github.com/mehranagh20/wimle"]] },
   { title: "IMLE-VLA: Fast Single-Step Action Generation for Vision-Language-Action Policies",
     authors: ["Kian Hosseinkhani","Qinhe Peng","George Shramko",ME,"Jianing Qian","Tristan Engst","Alireza Moazeni","Dinesh Jayaraman","Ke Li"],
-    venue: "IROS", year: "2026", links: [] },
+    venue: "IROS", year: "2026", thumb: "assets/papers/imle_vla.jpg", links: [] },
   { title: "P-CORE: Self-Supervised Surface Consistency for Point-Based Neural Editing",
-    authors: ["Yanshu Zhang","Shichong Peng",ME,"Alireza Moazeni","Ke Li"], venue: "ECCV", year: "2026",
-    links: [["OpenReview","https://openreview.net/forum?id=Dm0U9v7UPO"]] },
+    authors: ["Yanshu Zhang","Shichong Peng",ME,"Alireza Moazeni","Ke Li"], venue: "ECCV", year: "2026", thumb: "assets/papers/pcore.jpg",
+    links: [["Project","https://zvict.github.io/p-core/"],["Paper","https://zvict.github.io/p-core/static/pdfs/pcore_eccv2026.pdf"]] },
   { title: "Adaptive IMLE for Few-shot Pretraining-free Generative Modelling",
-    authors: [ME,"Shichong Peng","Ke Li"], venue: "ICML", year: "2023",
+    authors: [ME,"Shichong Peng","Ke Li"], venue: "ICML", year: "2023", thumb: "assets/papers/adaimle.gif",
     links: [["Paper","https://proceedings.mlr.press/v202/aghabozorgi23a.html"],["Project","https://mehranagh20.github.io/AdaIMLE/"],["Code","https://github.com/mehranagh20/AdaIMLE"]] },
 ];
 
@@ -215,9 +218,10 @@ document.getElementById("pubs").innerHTML = PUBS.map(p => {
   const authors = p.authors.map(a => a.startsWith(ME) ? `<span class="me">${a}</span>` : a).join(", ");
   const badge = p.badge ? `<span class="badge${p.badgeSub ? " sub" : ""}">${p.badge}</span>` : "";
   const links = p.links.length ? `<div class="pub-links">${p.links.map(([n,u]) => `<a href="${u}">${n}</a>`).join("")}</div>` : "";
+  const thumb = p.thumb ? `<img class="thumb" src="${p.thumb}" alt="" loading="lazy">` : `<div class="thumb ph">${p.venue}</div>`;
   return `<article class="pub">
-    <div class="pub-venue-col">${p.venue}<span class="yr">${p.year}</span></div>
-    <div><p class="pub-title">${p.title}${badge}</p><p class="pub-authors">${authors}</p>${links}</div>
+    <div class="thumb-col">${thumb}</div>
+    <div><p class="pub-title">${p.title}${badge}</p><p class="pub-authors">${authors}</p><div class="pub-venue">${p.venue} ${p.year}</div>${links}</div>
   </article>`;
 }).join("");
 </script>
