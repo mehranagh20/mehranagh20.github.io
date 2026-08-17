@@ -206,7 +206,7 @@ const PUBS = [
     authors: [ME, "Yanshu Zhang", "Alireza Moazeni", "Ke Li"], venue: "ICLR", year: "2026", thumb: "assets/papers/wimle.gif",
     links: [["Paper","https://arxiv.org/abs/2602.14351"],["Project","https://mehranagh20.github.io/wimle/"],["Code","https://github.com/mehranagh20/wimle"]] },
   { title: "IMLE-VLA: Fast Single-Step Action Generation for Vision-Language-Action Policies",
-    tldr: "Replaces the iterative diffusion/flow action head of VLA policies with a single-step conditional IMLE head, generating actions in one forward pass for much faster robot control.",
+    tldr: "Replaces the 10-step flow-matching action head of VLA policies (e.g. π0.5) with a single-step conditional IMLE generator: one forward pass instead of ten, a 3.67× inference speedup, no mode collapse, and the highest average success rate on the 40-task LIBERO benchmark.",
     authors: ["Kian Hosseinkhani","Qinhe Peng","George Shramko",ME,"Jianing Qian","Tristan Engst","Alireza Moazeni","Dinesh Jayaraman","Ke Li"],
     venue: "IROS", year: "2026", thumb: "assets/papers/imle_vla.jpg",
     links: [["Project","https://kianhk6.github.io/IMLE-VLA/"]] },
