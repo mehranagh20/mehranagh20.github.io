@@ -118,7 +118,7 @@
         little experience.</p>
         <p>I am a PhD candidate at <strong>Simon Fraser University</strong> (APEX Lab), advised by
         <a href="https://www.sfu.ca/~keli/">Ke Li</a>, and affiliated with <strong>Amii</strong>. I expect to
-        graduate in Fall 2026. Currently I am a Research Intern at <strong>RBC Borealis</strong>, where I work on
+        graduate in Fall 2026. In 2026 I was a Research Intern at <strong>RBC Borealis</strong>, where I worked on
         improving the inference speed of multi-billion-parameter multimodal models for robotics. In parallel,
         I am developing a novel, sample-efficient approach to <strong>reinforcement learning fine-tuning of
         multi-billion-parameter vision-language-action (VLA) models</strong>. Before my PhD I spent three years shipping production
@@ -149,7 +149,7 @@
   <section class="reveal" style="animation-delay:.22s">
     <p class="eyebrow">Experience</p>
     <ul class="exp">
-      <li><span class="when">2026</span><p class="what"><strong>RBC Borealis</strong> — Research Intern<span class="sub">Improving the inference speed of multi-billion-parameter multimodal models for real-time robotics.</span></p></li>
+      <li><span class="when">Jan – Sep 2026</span><p class="what"><strong>RBC Borealis</strong> — Research Intern<span class="sub">Improved the inference speed of multi-billion-parameter multimodal models for real-time robotics.</span></p></li>
       <li><span class="when">2021 – now</span><p class="what"><strong>Simon Fraser University</strong> — PhD in Computer Science, APEX Lab<span class="sub">Generative modeling and reinforcement learning with Ke Li; currently sample-efficient RL fine-tuning of large VLA models. Affiliated with the Alberta Machine Intelligence Institute (Amii).</span></p></li>
       <li><span class="when">2019</span><p class="what"><strong>Max Planck Institute for Informatics</strong> — Research Intern<span class="sub">Improved the preprocessing phase of the SPASS solver with Christoph Weidenbach; validated on competition-grade benchmarks.</span></p></li>
       <li><span class="when">2017 – 2020</span><p class="what"><strong>Morvarid</strong> — Senior Developer<span class="sub">Production systems in Python, Java, Scala, and JavaScript: verifiable voting, encrypted cloud storage, and Ergo Pool blockchain infrastructure.</span></p></li>
@@ -198,9 +198,18 @@ const NEWS = [
 ];
 
 const PUBS = [
-  { title: "MoCQL: Model-Based Conservative Q-Learning with Extrapolation Scores",
-    tldr: "Model-based offline RL that scores how far imagined rollouts extrapolate from data and penalizes Q-values accordingly, getting the benefits of synthetic data without its overconfidence.",
-    authors: [ME, "Ke Li"], venue: "NeurIPS", year: "2026", badge: "Under review", badgeSub: true, links: [] },
+  { title: "Dynamic Episode ALignment: Sample-Efficient Reinforcement Learning of Vision-Language-Action Models",
+    tldr: "Aligns each new episode with the policy's own shortest success via dynamic programming, so RL updates only productive steps in successes and wasted steps in failures, with no extra scoring model. With PPO it reaches 97.6% on LIBERO (one demo per task) and 80.4% on RoboTwin 2.0, versus 96.9% and 66.4% for SimpleVLA-RL.",
+    authors: [ME, "Kian Hosseinkhani", "Haowen Yao", "Luis Figueredo", "Ke Li"],
+    venue: "ICLR", year: "2027", badge: "Under review", badgeSub: true, links: [] },
+  { title: "PAIR: Distance-Preserving Compression for Fast Inference and Adaptation of Vision-Language-Action Policies",
+    tldr: "A small compression head, trained with a distance-preservation loss alongside LoRA adapters, shortens the visual-token sequence by over 14× while keeping what control needs. Inference is 2.4–2.8× faster with no drop in success, and adaptation wall-clock time is roughly halved.",
+    authors: [ME, "Kian Hosseinkhani", "Kry Yik Chau Lui", "Kaito Suzuki", "Ken Jiankun Zheng", "Andy Zhang", "Dantong Niu", "Trevor Darrell", "Roei Herzig", "Ke Li"],
+    venue: "ICRA", year: "2027", badge: "Under review", badgeSub: true, links: [] },
+  { title: "IMLE-LLM: Latent-Conditioned Windowed Decoding for Faster Inference",
+    tldr: "Turns any pretrained decoder-only transformer into a windowed decoder by adding a small latent projection: all positions in a window share one Gaussian latent, so a single forward pass commits mutually dependent tokens with no draft model or verifier. On Qwen3-8B it gives a 3.39× mean speed-up over one-token decoding while keeping most of the accuracy of an autoregressive fine-tune.",
+    authors: ["Alireza Moazeni", ME, "Tristan Engst", "Ke Li"],
+    venue: "ICLR", year: "2027", badge: "Under review", badgeSub: true, links: [] },
   { title: "WIMLE: Uncertainty-Aware World Models with IMLE for Sample-Efficient Continuous Control",
     tldr: "Stochastic, multimodal world models trained with IMLE that use their own predictive uncertainty to decide which imagined experience to trust, yielding markedly better sample efficiency on continuous control.",
     authors: [ME, "Yanshu Zhang", "Alireza Moazeni", "Ke Li"], venue: "ICLR", year: "2026", thumb: "assets/papers/wimle.gif",
