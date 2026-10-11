@@ -197,18 +197,6 @@ const NEWS = [
 ];
 
 const PUBS = [
-  { title: "Dynamic Episode ALignment: Sample-Efficient Reinforcement Learning of Vision-Language-Action Models",
-    tldr: "Aligns each new episode with the policy's own shortest success via dynamic programming, so RL updates only productive steps in successes and wasted steps in failures, with no extra scoring model. With PPO it reaches 97.6% on LIBERO (one demo per task) and 80.4% on RoboTwin 2.0, versus 96.9% and 66.4% for SimpleVLA-RL.",
-    authors: [ME, "Kian Hosseinkhani", "Haowen Yao", "Luis Figueredo", "Ke Li"],
-    venue: "ICLR", year: "2027", badge: "Under review", badgeSub: true, links: [] },
-  { title: "PAIR: Distance-Preserving Compression for Fast Inference and Adaptation of Vision-Language-Action Policies",
-    tldr: "A small compression head, trained with a distance-preservation loss alongside LoRA adapters, shortens the visual-token sequence by over 14× while keeping what control needs. Inference is 2.4–2.8× faster with no drop in success, and adaptation wall-clock time is roughly halved.",
-    authors: [ME + "*", "Kian Hosseinkhani*", "Kry Yik Chau Lui", "Kaito Suzuki", "Ken Jiankun Zheng", "Andy Zhang", "Dantong Niu", "Trevor Darrell", "Roei Herzig", "Ke Li"],
-    note: "* equal contribution", venue: "ICRA", year: "2027", badge: "Under review", badgeSub: true, links: [] },
-  { title: "IMLE-LLM: Latent-Conditioned Windowed Decoding for Faster Inference",
-    tldr: "Turns any pretrained decoder-only transformer into a windowed decoder by adding a small latent projection: all positions in a window share one Gaussian latent, so a single forward pass commits mutually dependent tokens with no draft model or verifier. On Qwen3-8B it gives a 3.39× mean speed-up over one-token decoding while keeping most of the accuracy of an autoregressive fine-tune.",
-    authors: ["Alireza Moazeni", ME, "Tristan Engst", "Ke Li"],
-    venue: "ICLR", year: "2027", badge: "Under review", badgeSub: true, links: [] },
   { title: "WIMLE: Uncertainty-Aware World Models with IMLE for Sample-Efficient Continuous Control",
     tldr: "Stochastic, multimodal world models trained with IMLE that use their own predictive uncertainty to decide which imagined experience to trust, yielding markedly better sample efficiency on continuous control.",
     authors: [ME, "Yanshu Zhang", "Alireza Moazeni", "Ke Li"], venue: "ICLR", year: "2026", thumb: "assets/papers/wimle.gif",
@@ -238,7 +226,7 @@ document.getElementById("pubs").innerHTML = PUBS.map(p => {
   const thumb = p.thumb ? `<img class="thumb" src="${p.thumb}" alt="" loading="lazy">` : `<div class="thumb ph">${p.venue}</div>`;
   return `<article class="pub">
     <div class="thumb-col">${thumb}</div>
-    <div><p class="pub-title">${p.title}${badge}</p><p class="pub-authors">${authors}${p.note ? ` <em>(${p.note})</em>` : ""}</p>${p.tldr ? `<p class="pub-tldr"><span>TL;DR</span> ${p.tldr}</p>` : ""}<div class="pub-venue">${p.venue} ${p.year}</div>${links}</div>
+    <div><p class="pub-title">${p.title}${badge}</p><p class="pub-authors">${authors}${p.note ? ` <em>(${p.note})</em>` : ""}</p>${p.tldr ? `<p class="pub-tldr"><span>TL;DR</span> ${p.tldr}</p>` : ""}<div class="pub-venue">${[p.venue, p.year].filter(Boolean).join(" ")}</div>${links}</div>
   </article>`;
 }).join("");
 </script>
