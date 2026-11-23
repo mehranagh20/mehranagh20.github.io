@@ -206,7 +206,7 @@ const NEWS = [
 
 const PUBS = [
   { title: "Dynamic Episode ALignment: Sample-Efficient Reinforcement Learning of Vision-Language-Action Models",
-    tldr: "Final rewards do not say which steps helped. DEAL fixes this credit assignment by aligning each episode with the policy's own shortest success via dynamic programming, so RL updates only productive steps in successes and wasted steps in failures, with no extra scoring model. With a recurrent Gaussian action head, it beats EgoVLA by a relative 46.8% on unseen backgrounds, and reaches 80.4% on RoboTwin 2.0 and 97.6% on LIBERO (one demo per task), versus 66.4% and 96.9% for SimpleVLA-RL.",
+    tldr: "Final rewards do not say which steps helped. DEAL fixes this credit assignment by aligning each episode with the policy's own shortest success via dynamic programming, so RL updates only productive steps in successes and wasted steps in failures, with no extra scoring model. With a recurrent Gaussian action head, it reaches 52.7% on unseen Ego humanoid backgrounds versus EgoVLA's 35.9%, 80.4% on RoboTwin 2.0 versus SimpleVLA-RL's 66.4%, and 97.6% on LIBERO (one demo per task) versus 96.9%.",
     authors: [ME, "Kian Hosseinkhani", "Haowen Yao", "Luis Figueredo", "Ke Li"],
     thumb: "assets/papers/deal.gif", full: "assets/papers/deal_full.mp4", badge: "Under review", badgeSub: true, links: [] },
   { title: "PAIR: Distance-Preserving Compression for Fast Inference and Adaptation of Vision-Language-Action Policies",
